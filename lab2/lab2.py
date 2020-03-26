@@ -90,6 +90,13 @@ w2 = generate_wiener_trajectory1(50)
 plt.step(w1, w2)
 plt.show()
 
+# ex 4
+w1 = generate_wiener_trajectory1(50)
+correlation = 1
+w2 = [0] + [correlation*w1[i-1] + math.sqrt(1-correlation**2)*w1[i] for i in range(1, len(w1))]
+
+plt.step(w1, w2)
+plt.show()
 
 # ex 5
 def f(t):
@@ -106,8 +113,8 @@ def plot_wiener_trajectory(w, data):
     plt.step(data, [w[x] for x in data])
 
 
-data = np.arange(10, 100000, 1000)
-plt.plot(data, [f(t) for t in data])
-plt.plot(data, [-f(t) for t in data])
-generate_wiener_trajectories(30, 100000, data)
-plt.show()
+# data = np.arange(10, 100000, 1000)
+# plt.plot(data, [f(t) for t in data])
+# plt.plot(data, [-f(t) for t in data])
+# generate_wiener_trajectories(30, 100000, data)
+# plt.show()
