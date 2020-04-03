@@ -1,0 +1,131 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{graphicx}
+% \usepackage
+% [
+%         a4paper,% other options: a3paper, a5paper, etc
+%         left=1.5cm,
+%         right=1.5cm,
+%         top=2cm,
+%         bottom=3cm,
+%         % use vmargin=2cm to make vertical margins equal to 2cm.
+%         % us  hmargin=3cm to make horizontal margins equal to 3cm.
+%         % use margin=3cm to make all margins  equal to 3cm.
+% ]
+% {geometry}
+\newcommand{\Tau}{\mathrm{T}}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel} 
+\usepackage[T1]{fontenc}		% For font coding
+\usepackage{polski}				% For word breaking dictionary
+\usepackage{amsmath}
+\newsavebox{\myproof}
+\usepackage{amssymb}
+
+\newcommand*{\field}[1]{\mathbb{#1}}%
+
+\title{WSTĘP DO MATEMATYKI FINANSOWEJ \\
+LABORATORIA 3\\}
+\author{Stanisław Pawlak}
+%\date{November 2019}
+
+\begin{document}
+\maketitle
+% \tableofcontents
+% \newpage
+% \section{Zadanie 1}
+\section{Zadanie}
+Udowodnij, że $\varphi \in \Phi$ wtedy i tylko wtedy, gdy $V_{t}(\varphi) = V_{0}(\varphi) +G_{t}(\varphi)$ dla $t \in \Tau$.
+\newline
+
+
+\textbf{Rozwiązanie:}
+\begin{itemize}
+\large
+    \item [$\Leftarrow$]
+    Weźmy różnicę $V(\varphi)$ podstawiając z założenia :
+    $$V_{t+1}(\varphi) - V_{t}(\varphi) = \varphi_{t+1}(S_{t+1} - S_{t})$$
+    
+    Z definicji $V(\varphi)$:
+    $$ V_{t+1}(\varphi) - V_{t}(\varphi) = \varphi_{t+1}S_{t+1} - \varphi_{t}S_{t} $$
+    
+    Porównując otrzymujemy: $\varphi_{t+1}S_{t} = \varphi_{t}S_{t}$. Oznacza to, że $\varphi \in \Phi$ dla $t \in \Tau$.
+    
+
+    \item [$\Rightarrow$]
+    
+   $$V_{t}(\varphi) =  \varphi_{t}S_{t} = \varphi_{0}S_{0} + \sum_{u=0}^{t-1} (\varphi_{u+1}S_{u+1} - \varphi_{u}S_{u})$$
+    
+    Podstawiając $\varphi_{u}S_{u} = \varphi_{u+1}S_{u}$
+    $$V_{t}(\varphi) =   \varphi_{0}S_{0} + \sum_{u=0}^{t-1} (\varphi_{u+1}(S_{u+1} - S_{u})) =   V_{0}(\varphi) + G_{t}(\varphi)$$ 
+\end{itemize}
+
+
+\section{Zadanie}
+
+Niech $C_{0}$oraz $P_{0}$ oznaczają ceny europejskich opcji kupna i sprzedaży z tą samą ceną wykonania K oraz tym samym terminem wykupu T. Udowodnij, że jeśli parytet kupna-sprzedaży
+$$C_{0} - P_{0} = S_{0} - \frac{K}{1+ r}$$
+
+nie jest spełniony, to na rynku istnieje arbitraż.
+
+\textbf{Rozwiązanie:}
+\begin{itemize}
+    \item [a)] Przypadek pierwszy: $C_{0} - P_{0} > S_{0} - \frac{K}{1+ r}$. Wtedy: \\
+    $$K + (1+r)(C_{0} - P_{0} - S_{0}) > 0$$
+   
+   Strategia arbitrażowa polega na kupnie akcji i opcji sprzedaży sprzedaniu opcji kupna.
+   
+   \item [b)] Przypadek drugi: $C_{0} - P_{0} < S_{0} - \frac{K}{1+ r}$. 
+   
+   Analogicznie. Przyjmujemy strategię przeciwną do opisanej powyżej.
+\end{itemize}
+
+\section{Zadanie}
+Załóżmy, że na rynku istnieje strategia samofinansująca $\varphi \in \Phi$ taka, że: \\
+$V_{0}(\varphi) = 0$ oraz $P(V_{t_{0}} (\varphi) \geq 0) = 1$ oraz $P(V_{t_{0}} (\varphi) > 0) > 0$,
+gdzie $t_{0} \in {0, . . . , T - 1}$ jest ustalonym czasem. O tej strategii można myśleć jako o (lokalnej) strategii arbitrażowej w przedziale czasowym $[0, t_{0} ]$. Udowodnij, że na rynku istnieje strategia arbitrażowa w $[0, T ]$. \\
+
+\textbf{Rozwiązanie:} \\
+Strategia arbitrażowa w  $[0, T ]$ powstaje poprzez włożenie w chwili $t_{0+1}$ wszystkiego do banku, aż do chwili $T$.
+
+W chwili T otrzymujemy:
+ $P(V_{T} (\varphi) \geq 0) = 1$ oraz $P(V_{T} (\varphi) > 0) > 0$
+Wraz z początkowym warunkiem: $V_{0}(\varphi) = 0$ spełnione są wszystkie warunki na strategię arbitrażową.
+
+
+\section{Zadanie}
+
+Udowodnij, że gdy istnieje strategia $\varphi$ spełniająca $V_{0} (\varphi) < 0$ oraz \\ $P(V_{T} (\varphi) \geq 0) = 1$, to na rynku istnieje arbitraż. \\
+
+\textbf{Rozwiązanie:} \\
+Istnienie strategii arbitrażowej wydaje się oczywiste, ponieważ w chwili 0 wartość portfela jest ujemna, zaś w chwili T: $V_{T}(\varphi) \geq 0$ z prawdopodobieństwem 1. Oznacza to, że w sposób pewny można otrzymać zysk o wartości $-V_{0}(\varphi)$.
+
+\section{Zadanie}
+
+Podaj przykład rynku bez arbitrażu, gdzie nie wszystkie wypłaty są osiągalne. Opisz dokładnie przestrzeń strategii samofinansujących $\Phi$ oraz przestrzeń wypłat osiągalnych. \\
+
+\textbf{Rozwiązanie:} \\
+Przykładem takiego rynku może być rynek analogiczny do omawianego w pkt. (5.11) wykładu: \\
+
+Rynek jednookresowy, trzystanowy $(\Omega = \{\omega_{1},\omega_{2}, \omega_{3}\})$ z jedną akcją. $r = 0.1$ oraz $S_{0}^{1} = 20$, $S_{1}^{1}(\omega_{1}) = 11$, $S_{1}^{1}(\omega_{2}) = 22$, $S_{1}^{1}(\omega_{3}) = 33$.
+
+Na rynku nie ma arbitrażu, rynek nie jest zupełny.
+$S_{0} = (1, 20)^{T}$
+
+Otrzymujemy dwa wektory niezależne: $ S_{1}^{0}(\omega) = (22, 22, 22)^{T}$, $S_{1}^{1}(\omega) = (11, 22, 33)^{T}$
+
+$\Phi = \{\varphi_{0}: \varphi_{0}S_{0} = \varphi_{1}S_{0}\}$. Przestrzeń $\Phi$ zawiera wszystkie kombinacje liniowe wektorów $\varphi_{0} = (1, 0)$ oraz $\varphi_{0} = (0, 1)$, $\varphi = (a,b)$.
+
+Przestrzeń wypłat osiągalnych określa: $a(22, 22, 22)^{T} + b(11, 22, 33)^{T}$.
+
+\section{Zadanie} 
+ Podaj przykład rynku bez arbitrażu, gdzie istnieje wiele strategii replikujacych daną wypłatę. \\
+ 
+\textbf{Rozwiązanie:} \\
+Rynek jednookresowy, dwustanowy $(\Omega = \{\omega_{1},\omega_{2}\})$ z dwoma akcjami. $r=0$ oraz:
+$$S_{0}^{1} = 10, S_{1}^{1}(\omega_{1}) = 15, S_{1}^{1}(\omega_{2}) = 5,$$ 
+$$S_{0}^{2} = 5, S_{1}^{2}(\omega_{1}) = 10, S_{1}^{2}(\omega_{2}) = 0,$$ 
+
+Strategie $\varphi = (a, b, c)$ dla $a + 10b + 5c = 100$, $a,b,c \in \field{N}\cup \{0\}$ replikują tą samą wypłatę.
+\end{document}
